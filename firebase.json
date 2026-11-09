@@ -1,0 +1,28 @@
+{
+  "firestore": {
+    "rules": "firestore.rules"
+  },
+  "emulators": {
+    "auth": { "port": 9099 },
+    "firestore": { "port": 8080 },
+    "ui": { "enabled": false },
+    "singleProjectMode": true
+  },
+  "flutter": {
+    "platforms": {
+      "android": {
+        "default": {
+          "projectId": "tidyday-ahmed",
+          "appId": "1:607821821583:android:681bf3580a80ca1ff8a2fa",
+          "fileOutput": "android/app/google-services.json"
+        }
+      },
+      "dart": {
+        "lib/firebase_options.dart": {
+          "projectId": "tidyday-ahmed",
+          "configurations": { "android": "1:607821821583:android:681bf3580a80ca1ff8a2fa" }
+        }
+      }
+    }
+  }
+}

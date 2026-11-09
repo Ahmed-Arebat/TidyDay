@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "607821821583",
+    "project_id": "tidyday-ahmed",
+    "storage_bucket": "tidyday-ahmed.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:607821821583:android:681bf3580a80ca1ff8a2fa",
+        "android_client_info": {
+          "package_name": "com.ahmed.tidyday"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "607821821583-kl0k20im4n37nlu6tf6sql66c357hagb.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.ahmed.tidyday",
+            "certificate_hash": "ac232fe824328b901436538bd69a9bc0a67cc856"
+          }
+        },
+        {
+          "client_id": "607821821583-qsrhup0harb974fghejid0a1uuro4mh8.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBIeG2dlbvyB8M0Basp_fFX5RqkkYw70KE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "607821821583-qsrhup0harb974fghejid0a1uuro4mh8.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
