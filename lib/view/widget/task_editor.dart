@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 
 import '../../data/model/task.dart';
+import '../action/confirm_task_deletion.dart';
+import 'due_date_button.dart';
 
 class TaskEditor extends StatefulWidget {
   const TaskEditor({super.key, this.task, required this.onSave, this.onDelete});
@@ -52,35 +54,14 @@ class _TaskEditorState extends State<TaskEditor> {
 
   Future<void> _confirmDelete() async {
     FocusScope.of(context).unfocus();
-    final confirmed = await showDialog<bool>(
-      context: context,
-      builder: (context) => AlertDialog(
-        title: const Text('Delete task?'),
-        content: const Text('This task will be removed from your list.'),
-        actions: [
-          TextButton(
-            onPressed: () => Navigator.pop(context, false),
-            child: const Text('Cancel'),
-          ),
-          TextButton(
-            onPressed: () => Navigator.pop(context, true),
-            style: TextButton.styleFrom(
-              foregroundColor: Theme.of(context).colorScheme.error,
-            ),
-            child: const Text('Delete'),
-          ),
-        ],
-      ),
-    );
-    if (confirmed == true && mounted) widget.onDelete?.call();
+    final confirmed = await confirmTaskDeletion(context);
+    if (confirmed && mounted) widget.onDelete?.call();
   }
 
   @override
   Widget build(BuildContext context) {
     final editing = widget.task != null;
     final theme = Theme.of(context);
-    final localizations = MaterialLocalizations.of(context);
-    final date = _dueDate;
     return Padding(
       padding: EdgeInsets.only(bottom: MediaQuery.viewInsetsOf(context).bottom),
       child: SafeArea(
@@ -131,29 +112,10 @@ class _TaskEditorState extends State<TaskEditor> {
                   ),
                 ),
                 const SizedBox(height: 12),
-                Row(
-                  children: [
-                    Flexible(
-                      child: OutlinedButton.icon(
-                        onPressed: _pickDate,
-                        icon: const Icon(
-                          Icons.calendar_today_outlined,
-                          size: 17,
-                        ),
-                        label: Text(
-                          date == null
-                              ? 'Add due date'
-                              : localizations.formatMediumDate(date),
-                        ),
-                      ),
-                    ),
-                    if (date != null)
-                      IconButton(
-                        tooltip: 'Remove due date',
-                        onPressed: () => setState(() => _dueDate = null),
-                        icon: const Icon(Icons.close_rounded),
-                      ),
-                  ],
+                DueDateButton(
+                  dueDate: _dueDate,
+                  onPick: _pickDate,
+                  onRemove: () => setState(() => _dueDate = null),
                 ),
                 const SizedBox(height: 16),
                 Row(

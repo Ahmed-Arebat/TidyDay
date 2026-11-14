@@ -44,7 +44,11 @@ firebase emulators:exec --only auth,firestore --project demo-tidyday "node tools
 
 ## Source layout
 
+- `lib/app` contains app startup, Firebase initialization, and session routing.
 - `lib/controller` contains the authentication and task BLoCs.
 - `lib/core` contains the app theme and Google sign-in service.
 - `lib/data` contains the task model and Firestore data source.
-- `lib/view` contains screens and shared widgets.
+- `lib/view/screen` contains only top-level screens.
+- `lib/view/widget` contains focused reusable UI components, including buttons,
+  task sections, status messages, and account controls.
+- `lib/view/action` contains dialogs, bottom-sheet launchers, and feedback actions.
