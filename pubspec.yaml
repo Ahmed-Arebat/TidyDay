@@ -14,6 +14,7 @@ dependencies:
   firebase_core: ^5.1.0
   flutter_bloc: ^9.1.1
   google_sign_in: ^7.2.0
+  skeletonizer: ^3.0.0
 
 dev_dependencies:
   flutter_test:

@@ -8,6 +8,7 @@ import 'account_avatar.dart';
 import 'brand_mark.dart';
 import 'completed_tasks_heading.dart';
 import 'task_list_message.dart';
+import 'task_loading_skeleton.dart';
 import 'task_overview.dart';
 import 'task_section_label.dart';
 import 'task_sliver_list.dart';
@@ -62,25 +63,17 @@ class TasksContent extends StatelessWidget {
                   children: [
                     CustomScrollView(
                       slivers: [
-                        SliverPadding(
-                          padding: const EdgeInsets.fromLTRB(20, 23, 20, 20),
-                          sliver: SliverToBoxAdapter(
-                            child: TaskOverview(
-                              today: today,
-                              total: state.tasks.length,
-                              completed: completed.length,
-                              showProgress: ready || state.tasks.isNotEmpty,
-                            ),
-                          ),
-                        ),
                         if (state.loading && state.tasks.isEmpty)
-                          const SliverToBoxAdapter(
-                            child: Padding(
-                              padding: EdgeInsets.all(24),
-                              child: Center(
-                                child: CircularProgressIndicator(
-                                  semanticsLabel: 'Loading tasks',
-                                ),
+                          const SliverToBoxAdapter(child: TaskLoadingSkeleton())
+                        else
+                          SliverPadding(
+                            padding: const EdgeInsets.fromLTRB(20, 23, 20, 20),
+                            sliver: SliverToBoxAdapter(
+                              child: TaskOverview(
+                                today: today,
+                                total: state.tasks.length,
+                                completed: completed.length,
+                                showProgress: ready || state.tasks.isNotEmpty,
                               ),
                             ),
                           ),
